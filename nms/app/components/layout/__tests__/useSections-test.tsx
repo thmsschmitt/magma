@@ -19,12 +19,13 @@ import NetworkContext from '../../context/NetworkContext';
 import React from 'react';
 import useSections from '../useSections';
 
-import {AppContextProvider} from '../../../../app/components/context/AppContext';
+import {AppContextProvider} from '../../context/AppContext';
 import {act, renderHook} from '@testing-library/react-hooks';
 
 const enqueueSnackbarMock = jest.fn();
 jest.mock('../../../../generated/MagmaAPIBindings.js');
 jest
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
   .spyOn(require('../../../../app/hooks/useSnackbar'), 'useEnqueueSnackbar')
   .mockReturnValue(enqueueSnackbarMock);
 
@@ -36,7 +37,7 @@ global.CONFIG = {
   },
 };
 
-const wrapper = ({children}) => (
+const wrapper = ({children}: {children: React.ReactNode}) => (
   <AppContextProvider networkIDs={['network1']}>
     <NetworkContext.Provider value={{networkId: 'network1'}}>
       {children}
@@ -44,12 +45,12 @@ const wrapper = ({children}) => (
   </AppContextProvider>
 );
 
-type TestCase = {
-  default: string,
-  sections: string[],
-};
+interface TestCase {
+  default: string;
+  sections: Array<string>;
+}
 
-const testCases: {[string]: TestCase} = {
+const testCases = {
   lte: {
     default: 'dashboard',
     sections: [
@@ -105,7 +106,7 @@ AllNetworkTypes.forEach(networkType => {
   // different config defaults
   const apiNetworkType = networkType === XWFM ? CWF : networkType;
   test('Should render ' + networkType, async () => {
-    MagmaAPIBindings.getNetworksByNetworkIdType.mockResolvedValue(
+    (MagmaAPIBindings.getNetworksByNetworkIdType as jest.Mock).mockResolvedValue(
       apiNetworkType,
     );
 
@@ -124,6 +125,6 @@ AllNetworkTypes.forEach(networkType => {
     const paths = result.current[1].map(r => r.path);
     expect(paths).toStrictEqual(testCase.sections);
 
-    MagmaAPIBindings.getNetworksByNetworkIdType.mockClear();
+    (MagmaAPIBindings.getNetworksByNetworkIdType as jest.Mock).mockClear();
   });
 });

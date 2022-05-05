@@ -26,19 +26,19 @@ module.exports = {
       name: 'server',
       testEnvironment: 'node',
       testMatch: [
-        '<rootDir>/server/**/__tests__/*.js',
-        '<rootDir>/shared/**/__tests__/*.js',
+        '<rootDir>/server/**/__tests__/*.[jt]s?(x)',
+        '<rootDir>/shared/**/__tests__/*.[jt]s?(x)',
       ],
       transform: {
-        '^.+\\.js$': 'babel-jest',
+        '^.+\\.(js|ts|tsx)$': 'babel-jest',
       },
     },
     {
       name: 'app',
       testEnvironment: 'jsdom',
-      testMatch: ['<rootDir>/app/**/__tests__/*.js'],
+      testMatch: ['<rootDir>/app/**/__tests__/*.[jt]s?(x)'],
       transform: {
-        '^.+\\.js$': 'babel-jest',
+        '^.+\\.(js|ts|tsx)$': 'babel-jest',
       },
       setupFilesAfterEnv: ['./jest.setup.app.js'],
     },

@@ -25,7 +25,7 @@ import MagmaV1API from '../../../generated/WebClient';
 import React from 'react';
 import isGatewayHealthy from '../../components/GatewayUtils';
 import nullthrows from '../../../shared/util/nullthrows';
-import useMagmaAPI from '../../../api/useMagmaAPI';
+import useMagmaAPI from '../../../api/useMagmaAPIFlow';
 
 import {useContext} from 'react';
 import {useParams} from 'react-router-dom';

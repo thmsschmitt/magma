@@ -33,7 +33,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import nullthrows from '../../../shared/util/nullthrows';
-import useMagmaAPI from '../../../api/useMagmaAPI';
+import useMagmaAPI from '../../../api/useMagmaAPIFlow';
 import withAlert from '../Alert/withAlert';
 import {Route, Routes, useNavigate, useParams} from 'react-router-dom';
 import {useEnqueueSnackbar} from '../../../app/hooks/useSnackbar';

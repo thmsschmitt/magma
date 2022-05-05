@@ -36,7 +36,7 @@ jest
   .spyOn(require('../../../../../app/hooks/useSnackbar'), 'useSnackbars')
   .mockReturnValue(useSnackbarsMock);
 const useMagmaAPIMock = jest
-  .spyOn(require('../../../../../api/useMagmaAPI'), 'default')
+  .spyOn(require('../../../../../api/useMagmaAPIFlow'), 'default')
   .mockReturnValue({response: []});
 
 const Wrapper = (props: {route: string, children: React.Node}) => (
