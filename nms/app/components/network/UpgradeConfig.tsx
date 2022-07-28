@@ -272,6 +272,7 @@ function UpgradeConfig(props: WithAlert) {
           networkId,
         })
       ).data;
+
       setGateways(paginated_gateways.gateways);
     } catch (error) {
       enqueueSnackbar(getErrorMessage(error), {
