@@ -86,6 +86,7 @@ export default function GatewayTable() {
  */
 function GatewayStatusTable(props: WithAlert & {refresh: boolean}) {
   const navigate = useNavigate();
+
   const enqueueSnackbar = useEnqueueSnackbar();
   const gwCtx = useContext(FEGGatewayContext);
 
