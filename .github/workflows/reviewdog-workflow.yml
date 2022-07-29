@@ -133,6 +133,8 @@ jobs:
           node-version: '16'
       - name: install dependencies
         run: yarn install
+        with:
+          workdir: 'nms/'
       - name: eslint
         uses: reviewdog/action-eslint@v1
         with:
